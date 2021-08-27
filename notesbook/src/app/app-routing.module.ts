@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AutenticacaoGuard } from './autenticacao/autenticacao.guard';
 import { LoginGuard } from './autenticacao/login.guard';
+import { GlobalErrorComponent } from './errors/global-error/global-error.component';
+import { NotFoundComponent } from './errors/not-found/not-found.component';
 
 const routes: Routes = [
   {
@@ -20,6 +22,24 @@ const routes: Routes = [
       import('./notas/notas.module').then((m) => m.NotasModule),
     canLoad: [AutenticacaoGuard],
   },
+  { 
+      path: 'error', 
+      component: GlobalErrorComponent,
+      data: {
+          title: 'Error'
+      }
+  },
+  { 
+      path: 'not-found', 
+      component: NotFoundComponent,
+      data: {
+          title: 'Not found'
+      }
+  },
+  {
+      path: '**', 
+      redirectTo: 'not-found'
+  }
 ];
 
 @NgModule({

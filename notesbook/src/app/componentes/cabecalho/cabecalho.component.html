@@ -13,7 +13,7 @@
     <app-menu #menu>
       <ul class="list-unstyled">
         <li>
-          <a [routerLink]="['notas', 'novo']">Novo Nota</a>
+          <a [routerLink]="['notas', 'novo']">New Note</a>
         </li>
       </ul>
     </app-menu>
@@ -32,4 +32,8 @@
       <a [routerLink]="['']">Login</a>
     </span>
   </ng-template>
+  <div class="fixed-top hide">
+    <ap-loading></ap-loading>
+    <ap-alert></ap-alert>
+  </div>
 </header>
