@@ -1,0 +1,29 @@
+<div class="bg-white border" *ngIf="nota$ | async as nota">
+  <div class="row">
+    <div class="col-lg-8">
+      <app-nota
+        [url]="nota.url"
+        [descricao]="nota.description"
+      ></app-nota>
+    </div>
+    <div class="col-lg-4">
+      <small>
+        <p class="text-left break-word">{{ nota.description }}</p>
+        <i (click)="curtir()" class="fa fa-heart-o fa-2x mr-2 pull-left">{{
+          nota.likes
+        }}</i>
+        <i class="fa fa-comment-o fa-2x mr-2 ml-2">{{ nota.comments }}</i>
+        <i (click)="excluir()" class="fa fa-trash-o fa-2x pull-right"></i>
+      </small>
+
+      <app-comentarios
+        [id]="notaId"
+        *ngIf="nota.allowComments; else warning"
+      ></app-comentarios>
+
+      <ng-template #warning>
+        <p>Usuário não pode comentar o nota</p>
+      </ng-template>
+    </div>
+  </div>
+</div>
