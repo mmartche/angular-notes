@@ -22,6 +22,12 @@ const routes: Routes = [
       import('./notas/notas.module').then((m) => m.NotasModule),
     canLoad: [AutenticacaoGuard],
   },
+  {
+    path: 'posts',
+    loadChildren: () =>
+      import('./posts/posts.module').then((m) => m.PostsModule),
+    // canLoad: [AutenticacaoGuard],
+  },
   { 
       path: 'error', 
       component: GlobalErrorComponent,

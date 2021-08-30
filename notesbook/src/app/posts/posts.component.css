@@ -1,0 +1,7 @@
+.inactive {
+  text-decoration: line-through;
+}
+
+.post-item .post-item-button {
+  margin: 5px;
+}

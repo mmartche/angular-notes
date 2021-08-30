@@ -1,22 +1,24 @@
-<p class="text-center text-muted" *ngIf="!notas.length">
-  Desculpe não há notas
-</p>
+<div class="container">
+  <p class="text-center text-muted" *ngIf="!notas.length">
+    Desculpe não há notas
+  </p>
 
-<div class="row">
-  <div *ngFor="let nota of notas" class="col-4">
-    <a [routerLink]="['/notas', nota.id]">
-      <app-cartao>
-        <app-nota
-          [url]="nota.url"
-          [descricao]="nota.description"
-        ></app-nota>
-        <i aria-hidden="true" class="fa fa-heart-o fa-1x mr-2">{{
-          nota.likes
-        }}</i>
-        <i aria-hidden="true" class="fa fa-comment-o fa-1x mr-2 ml-2">
-          {{ nota.comments }}
-        </i>
-      </app-cartao>
-    </a>
+  <div class="row">
+    <div *ngFor="let nota of notas" class="col-4">
+      <a [routerLink]="['/notas', nota.id]">
+        <app-cartao>
+          <app-nota
+            [url]="nota.url"
+            [descricao]="nota.description"
+          ></app-nota>
+          <i aria-hidden="true" class="fa fa-heart-o fa-1x mr-2">{{
+            nota.likes
+          }}</i>
+          <i aria-hidden="true" class="fa fa-comment-o fa-1x mr-2 ml-2">
+            {{ nota.comments }}
+          </i>
+        </app-cartao>
+      </a>
+    </div>
   </div>
 </div>

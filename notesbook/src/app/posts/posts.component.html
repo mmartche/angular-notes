@@ -1,0 +1,23 @@
+<div class="container"> 
+  <div style="text-align:center">
+    <h1>{{ title }}!</h1>
+  </div>
+  <p>
+    current status: {{ onlineOfflineService.isOnline ? 'online' : 'offline' }}
+  </p>
+  <div>
+    <form (ngSubmit)="addPost()" [formGroup]="form">
+      <input type="text" formControlName="value" />
+      <button [disabled]="form.invalid">Add Item</button>
+    </form>
+  </div>
+  <div>
+    <ul style="list-style-type: none;">
+      <li *ngFor="let item of posts" class="post-item">
+        <span [ngClass]="{ inactive: item.done }">{{ item.value }}</span>
+
+        <button class="post-item-button" (click)="markAsDone(item)">Done</button>
+      </li>
+    </ul>
+  </div>
+</div>
