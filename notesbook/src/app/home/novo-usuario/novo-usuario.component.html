@@ -8,7 +8,7 @@
         novoUsuarioForm.get('email')?.errors?.required &&
         novoUsuarioForm.get('email')?.touched
       "
-      mensagem="E-mail obrigatório"
+      mensagem="E-mail requested"
     >
     </app-mensagem>
     <app-mensagem
@@ -16,13 +16,13 @@
         novoUsuarioForm.get('email')?.errors?.email &&
         novoUsuarioForm.get('email')?.touched
       "
-      mensagem="E-mail no formato incorreto"
+      mensagem="E-mail invalid"
     >
     </app-mensagem>
   </div>
   <div class="form-group">
     <input
-      placeholder="Nome Completo"
+      placeholder="Full Name"
       class="form-control"
       formControlName="fullName"
     />
@@ -31,13 +31,13 @@
         novoUsuarioForm.get('fullName')?.errors &&
         novoUsuarioForm.get('fullName')?.touched
       "
-      mensagem="Nome incorreto"
+      mensagem="Name invalid"
     >
     </app-mensagem>
   </div>
   <div class="form-group">
     <input
-      placeholder="Usuário"
+      placeholder="User Name"
       class="form-control"
       formControlName="userName"
     />
@@ -46,29 +46,29 @@
         novoUsuarioForm.get('userName')?.errors?.minusculo &&
         novoUsuarioForm.get('userName')?.touched
       "
-      mensagem="Usuário deve ser em letra minúscula"
+      mensagem="User name in lower case"
     >
     </app-mensagem>
     <app-mensagem
       *ngIf="novoUsuarioForm.get('userName')?.errors?.usuarioExistente"
-      mensagem="Usuário já existe"
+      mensagem="User name exist"
     ></app-mensagem>
   </div>
   <div class="form-group">
     <input
       type="password"
-      placeholder="Senha"
+      placeholder="Password"
       class="form-control"
       formControlName="password"
     />
     <app-mensagem
       *ngIf="novoUsuarioForm.errors?.senhaIgualUsuario"
-      mensagem="Senha deve ser diferente do usuário"
+      mensagem="Password must be different from e-mail"
     >
     </app-mensagem>
   </div>
 
-  <button class="btn btn-primary btn-block">Cadastro</button>
+  <button class="btn btn-primary btn-block">Create User</button>
 </form>
 
-<p>Já um usuário? <a [routerLink]="['']"> Faça Login</a></p>
+<p>Already a User? <a [routerLink]="['']">Login</a></p>
