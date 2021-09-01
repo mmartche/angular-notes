@@ -11,12 +11,14 @@
       <button [disabled]="form.invalid">Add Item</button>
     </form>
   </div>
+  <!-- <div class="bg-white border" *ngIf="(photo$ | async) as photo"> -->
   <div>
     <ul style="list-style-type: none;">
       <li *ngFor="let item of posts" class="post-item">
         <span [ngClass]="{ inactive: item.done }">{{ item.value }}</span>
 
         <button class="post-item-button" (click)="markAsDone(item)">Done</button>
+        <button class="post-item-button" (click)="deletePost(item)">Delete</button>
       </li>
     </ul>
   </div>

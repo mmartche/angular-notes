@@ -21,13 +21,14 @@ export class PostService {
     post.done = false;
     this.posts.push(post);
 
-    if (!this.onlineOfflineService.isOnline) {
+    // if (!this.onlineOfflineService.isOnline) {
       this.addToIndexedDb(post);
-    }
+    // }
   }
 
-  getAllPosts() {
-    return this.posts;
+  async getAllPosts() {
+    const allItems: Post[] = await this.db.posts.toArray();
+    return allItems;
   }
 
   private registerToEvents(onlineOfflineService: OnlineOfflineService) {
@@ -68,5 +69,13 @@ export class PostService {
         console.log(`item ${item.id} sent and deleted locally`);
       });
     });
+  }
+
+  updatePostItem(post: Post) {
+    return this.db.posts.update(post.id, post);
+  }
+
+  deletePostItem(post: Post) {
+    return this.db.posts.delete(post.id);
   }
 }

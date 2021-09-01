@@ -13,6 +13,7 @@ export class PostsComponent implements OnInit {
   title = 'To Do List';
   form: FormGroup;
 
+  // posts: Post[] = [];
   posts: Post[] = [];
 
   constructor(
@@ -25,16 +26,29 @@ export class PostsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.posts = this.postService.getAllPosts();
+  this.updateListAllPosts();
+}
+
+  updateListAllPosts(){
+    this.postService.getAllPosts().then((res: Post[]) => {
+      this.posts = res;
+    });
   }
 
   addPost() {
     this.postService.addPost(this.form.value);
-
+    this.updateListAllPosts();
     this.form.reset();
   }
-
+  
   markAsDone(post: Post) {
     post.done = !post.done;
+    this.postService.updatePostItem(post);
+    this.updateListAllPosts();
+  }
+  
+  deletePost(post: Post) {
+    this.postService.deletePostItem(post);
+    this.updateListAllPosts();
   }
 }
